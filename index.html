@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shelby Donner — Consultant & Data Analytics Professional</title>
+  <meta name="description" content="Consultant and data analytics professional with a Master's in Artificial Intelligence. Cross-industry experience across the US and India." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #2C5F2D;
+      --teal-dark: #1e4220;
+      --mint: #97E5D1;
+      --apricot: #FFB37E;
+      --off-white: #F9F9F9;
+      --ink: #1a2e1a;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--off-white);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(249,249,249,0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(44,95,45,0.12);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: flex-end;
+      height: 56px; gap: 32px;
+    }
+    .nav-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(26,46,26,0.5); cursor: pointer;
+      border: none; background: none;
+      padding: 4px 0; border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none; display: inline-block;
+    }
+    .nav-link:hover { color: var(--teal); border-bottom-color: var(--apricot); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 420px;
+      display: flex; align-items: center;
+      overflow: hidden;
+      background: var(--teal-dark);
+      padding: 80px 48px;
+    }
+    #hero-bg {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(151,229,209,0.15) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    #hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 20%, var(--teal-dark) 72%);
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(65px);
+      animation: orb-float 9s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .orb-1 { width:320px; height:320px; background:var(--mint);    opacity:0.22; top:-80px;   left:-20px;  animation-delay:0s; }
+    .orb-2 { width:220px; height:220px; background:var(--apricot); opacity:0.18; bottom:-50px; left:32%;   animation-delay:-4s; }
+    @keyframes orb-float {
+      from { transform: translateY(0) scale(1); }
+      to   { transform: translateY(-22px) scale(1.06); }
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 660px; }
+    .hero-name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(48px, 7vw, 72px);
+      font-weight: 700; line-height: 1.05;
+      color: var(--off-white); letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      opacity: 0; animation: fade-up 0.8s 0.15s forwards;
+    }
+    .hero-rule {
+      width: 48px; height: 2px; background: var(--apricot);
+      margin-bottom: 22px;
+      opacity: 0; animation: fade-up 0.6s 0.3s forwards;
+    }
+    .hero-title {
+      font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(151,229,209,0.78); margin-bottom: 22px;
+      opacity: 0; animation: fade-up 0.7s 0.42s forwards;
+    }
+    .hero-desc {
+      font-size: 11.5px; line-height: 1.9;
+      color: rgba(249,249,249,0.56);
+      max-width: 480px;
+      opacity: 0; animation: fade-up 0.8s 0.55s forwards;
+    }
+    @keyframes fade-up {
+      from { opacity:0; transform: translateY(14px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    /* ── TOOLS STRIP ── */
+    #tools {
+      background: #edf7f3;
+      border-bottom: 1px solid rgba(44,95,45,0.1);
+      padding: 20px 48px;
+      display: flex; align-items: flex-start; gap: 32px; flex-wrap: wrap;
+    }
+    .tools-label {
+      font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(44,95,45,0.4); white-space: nowrap; padding-top: 7px;
+    }
+    .tools-list { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; flex: 1; }
+    .tool-item {
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px 14px;
+      border: 1px solid rgba(44,95,45,0.18); border-radius: 2px;
+      background: rgba(255,255,255,0.65);
+      opacity: 0.85; transition: opacity 0.2s, border-color 0.2s;
+    }
+    .tool-item:hover { opacity: 1; border-color: rgba(44,95,45,0.35); }
+    .tool-icon { width: 16px; height: 16px; flex-shrink: 0; }
+    .tool-name { font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); white-space: nowrap; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 56px 48px; }
+    .section + .section { border-top: 1px solid rgba(44,95,45,0.1); }
+    .section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:28px; }
+    .section-title { font-family:'Libre Baskerville',serif; font-size:22px; font-weight:400; color:var(--teal); }
+    .section-rule { flex:1; height:1px; background:rgba(44,95,45,0.12); }
+    .section-count { font-size:9px; letter-spacing:0.2em; color:rgba(44,95,45,0.35); }
+
+    /* ── CONTROLS ── */
+    .controls-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px; gap: 16px; flex-wrap: wrap;
+    }
+    .filter-row { display:flex; gap:6px; flex-wrap:wrap; }
+    .chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 7px 14px; border-radius: 2px; cursor: pointer;
+      border: 1px solid rgba(44,95,45,0.35);
+      background: transparent; color: var(--teal);
+      transition: all 0.2s;
+    }
+    .chip:hover { background: rgba(44,95,45,0.07); }
+    .chip.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .chip.active:hover { background: #3a7a3b; }
+
+    .view-tabs { display:flex; }
+    .tab {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 7px 16px; cursor: pointer;
+      border: 1px solid rgba(44,95,45,0.35);
+      background: transparent; color: var(--teal);
+      transition: all 0.2s;
+    }
+    .tab:first-child { border-radius: 2px 0 0 2px; }
+    .tab:last-child  { border-radius: 0 2px 2px 0; border-left: none; }
+    .tab:hover { background: rgba(44,95,45,0.07); }
+    .tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .tab.active:hover { background: #3a7a3b; }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: rgba(44,95,45,0.1);
+    }
+    .proj-card {
+      background: var(--off-white); padding: 28px; cursor: pointer; position: relative;
+      border-left: 3px solid transparent;
+      transition: background 0.25s, border-color 0.25s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .proj-card:hover { background: #edfaf6; border-left-color: var(--mint); }
+    .proj-card:hover .proj-arrow { opacity:1; transform:translate(3px,-3px); }
+    .proj-card.hidden { display:none !important; }
+
+    /* ── PROJECTS LIST ── */
+    .projects-list { display:flex; flex-direction:column; gap:2px; background:rgba(44,95,45,0.08); }
+    .proj-row {
+      background: var(--off-white); padding: 18px 24px;
+      display: grid; grid-template-columns: 1fr auto auto;
+      align-items: center; gap: 20px;
+      cursor: pointer; transition: background 0.2s;
+      text-decoration: none; color: inherit;
+    }
+    .proj-row:hover { background: #edfaf6; }
+    .proj-row.hidden { display:none !important; }
+    .proj-row-name { font-family:'Libre Baskerville',serif; font-size:14px; color:var(--teal); margin-bottom:4px; }
+    .proj-row-desc { font-size:9px; line-height:1.6; color:rgba(26,46,26,0.45); margin-bottom:6px; }
+    .proj-row-lang { display:inline-flex; align-items:center; gap:5px; font-size:8px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(44,95,45,0.4); }
+
+    /* Shared card elements */
+    .proj-lang { display:inline-flex; align-items:center; gap:6px; font-size:8px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(44,95,45,0.4); margin-bottom:10px; }
+    .lang-dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
+    .proj-name { font-family:'Libre Baskerville',serif; font-size:16px; font-weight:400; color:var(--teal); margin-bottom:7px; }
+    .proj-desc { font-size:10px; line-height:1.7; color:rgba(26,46,26,0.5); margin-bottom:14px; }
+    .proj-meta { display:flex; gap:14px; }
+    .proj-stat { font-size:9px; color:rgba(26,46,26,0.35); }
+    .proj-stat span { color:var(--teal); }
+    .proj-arrow { position:absolute; top:18px; right:18px; color:var(--apricot); opacity:0; transition:all 0.25s; font-size:14px; }
+    .proj-row .proj-arrow { position:static; opacity:0.45; font-size:12px; color:var(--apricot); }
+
+    /* Empty state */
+    .empty-state {
+      background: var(--off-white);
+      padding: 48px 32px; text-align: center;
+      border: 1px dashed rgba(44,95,45,0.2); border-radius: 2px;
+    }
+    .empty-state-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16px; font-weight: 400; color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .empty-state-desc { font-size: 10px; line-height: 1.8; color: rgba(26,46,26,0.4); }
+    .empty-state-link {
+      display: inline-block; margin-top: 18px;
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--teal); text-decoration: none;
+      border-bottom: 1px solid rgba(44,95,45,0.3);
+      padding-bottom: 2px; transition: border-color 0.2s;
+    }
+    .empty-state-link:hover { border-color: var(--apricot); color: var(--teal); }
+
+    /* Show more */
+    .show-more {
+      width: 100%; padding: 14px; margin-top: 2px;
+      font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      background: transparent; color: var(--teal);
+      border: none; border-top: 1px solid rgba(44,95,45,0.12);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .show-more:hover { background: rgba(44,95,45,0.05); }
+
+    /* ── WRITING ── */
+    .writing-list { display:flex; flex-direction:column; gap:2px; background:rgba(44,95,45,0.08); }
+    .article-row {
+      background: var(--off-white); padding: 22px 28px;
+      display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 24px;
+      cursor: pointer; transition: background 0.2s; position: relative;
+      text-decoration: none; color: inherit;
+    }
+    .article-row:hover { background: #edfaf6; }
+    .article-row:hover .art-arrow { opacity:1; }
+    .art-date { font-size:9px; letter-spacing:0.1em; color:rgba(26,46,26,0.3); line-height:1.5; }
+    .art-title { font-family:'Libre Baskerville',serif; font-size:15px; font-weight:400; color:var(--teal); margin-bottom:4px; }
+    .art-sub { font-size:9px; line-height:1.6; color:rgba(26,46,26,0.45); }
+    .art-tag {
+      font-size:8px; letter-spacing:0.12em; text-transform:uppercase;
+      padding:4px 10px; border-radius:2px; white-space:nowrap;
+      background:rgba(44,95,45,0.07); color:var(--teal);
+      border:1px solid rgba(44,95,45,0.15);
+    }
+    .art-arrow { position:absolute; right:100px; top:50%; transform:translateY(-50%); color:var(--apricot); opacity:0; transition:opacity 0.2s; font-size:13px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(44,95,45,0.1);
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-name { font-family:'Libre Baskerville',serif; font-size:13px; color:var(--teal); }
+    .footer-links { display:flex; gap:24px; }
+    .footer-link {
+      font-size:9px; letter-spacing:0.18em; text-transform:uppercase;
+      color:rgba(26,46,26,0.4); text-decoration:none;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color:var(--teal); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.55s, transform 0.55s; }
+    .reveal.in { opacity:1; transform:translateY(0); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(44,95,45,0.2); border-radius: 2px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 24px; gap: 20px; }
+      #hero { padding: 60px 24px; }
+      #tools { padding: 18px 24px; gap: 18px; }
+      .section { padding: 44px 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .article-row { grid-template-columns: 60px 1fr; }
+      .art-tag { display: none; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-link" href="#projects">Projects</a>
+    <a class="nav-link" href="#writing">Writing</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div id="hero-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="hero-inner">
+      <h1 class="hero-name">Shelby Donner</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-title">Consultant &amp; Data Analytics Professional</p>
+      <p class="hero-desc">Consultant and data analytics professional with a Master's in Artificial Intelligence. I've worked across industries in the US and abroad — including time living and working in India. I help organizations make better decisions through rigorous analysis, clear communication, and the technical depth to build what's needed.</p>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <div id="tools">
+    <span class="tools-label">Tools &amp;<br>technologies</span>
+    <div class="tools-list">
+
+      <!-- Python -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.031v-2.867s-.109-3.402 3.35-3.402h5.769s3.24.052 3.24-3.13V3.19S18.28 0 11.914 0zm-3.21 1.84a1.038 1.038 0 110 2.077 1.038 1.038 0 010-2.077z" fill="#3776AB"/>
+          <path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.96-3.403-5.96h-2.031v2.867s.109 3.402-3.35 3.402H9.447s-3.24-.052-3.24 3.13V20.81S5.72 24 12.086 24zm3.21-1.84a1.038 1.038 0 110-2.077 1.038 1.038 0 010 2.077z" fill="#FFD43B"/>
+        </svg>
+        <span class="tool-name">Python</span>
+      </div>
+
+      <!-- SQL -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="12" cy="6" rx="10" ry="3.5" fill="#2C5F2D" opacity="0.85"/>
+          <path d="M2 6v4c0 1.93 4.477 3.5 10 3.5S22 11.93 22 10V6c0 1.93-4.477 3.5-10 3.5S2 7.93 2 6z" fill="#97E5D1" opacity="0.55"/>
+          <path d="M2 10v4c0 1.93 4.477 3.5 10 3.5S22 15.93 22 14v-4c0 1.93-4.477 3.5-10 3.5S2 11.93 2 10z" fill="#97E5D1" opacity="0.35"/>
+          <path d="M2 14v4c0 1.93 4.477 3.5 10 3.5S22 19.93 22 18v-4c0 1.93-4.477 3.5-10 3.5S2 15.93 2 14z" fill="#97E5D1" opacity="0.2"/>
+          <ellipse cx="12" cy="6" rx="10" ry="3.5" fill="none" stroke="#2C5F2D" stroke-width="1"/>
+        </svg>
+        <span class="tool-name">SQL</span>
+      </div>
+
+      <!-- Databricks -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.5L2.5 8v3.5L12 17l9.5-5.5V8L12 2.5z" fill="#FF3621"/>
+          <path d="M2.5 11.5V15L12 20.5l9.5-5.5v-3.5L12 17l-9.5-5.5z" fill="#FF3621" opacity="0.7"/>
+          <path d="M2.5 15v3.5L12 24l9.5-5.5V15L12 20.5 2.5 15z" fill="#FF3621" opacity="0.4"/>
+        </svg>
+        <span class="tool-name">Databricks</span>
+      </div>
+
+      <!-- Power BI -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1"  y="14" width="4" height="8"  rx="1" fill="#F2C811"/>
+          <rect x="7"  y="9"  width="4" height="13" rx="1" fill="#F2C811" opacity="0.85"/>
+          <rect x="13" y="5"  width="4" height="17" rx="1" fill="#F2C811" opacity="0.7"/>
+          <rect x="19" y="2"  width="4" height="20" rx="1" fill="#F2C811" opacity="0.55"/>
+          <circle cx="21" cy="1.5" r="1.5" fill="#E8A000"/>
+        </svg>
+        <span class="tool-name">Power BI</span>
+      </div>
+
+      <!-- Tableau -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10.5" y="1"    width="3" height="9"  rx="1.5" fill="#E97627"/>
+          <rect x="10.5" y="14"   width="3" height="9"  rx="1.5" fill="#E97627"/>
+          <rect x="1"    y="10.5" width="9" height="3"  rx="1.5" fill="#E97627"/>
+          <rect x="14"   y="10.5" width="9" height="3"  rx="1.5" fill="#E97627"/>
+          <rect x="10.5" y="10.5" width="3" height="3"  rx="0.5" fill="#C0581A"/>
+          <rect x="3.5"  y="3.5"  width="2" height="6"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="3.5"  y="3.5"  width="6" height="2"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="18.5" y="3.5"  width="2" height="6"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="15.5" y="3.5"  width="6" height="2"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="3.5"  y="14.5" width="6" height="2"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="3.5"  y="18.5" width="2" height="2"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="15.5" y="18.5" width="6" height="2"  rx="1"   fill="#E97627" opacity="0.5"/>
+          <rect x="18.5" y="14.5" width="2" height="6"  rx="1"   fill="#E97627" opacity="0.5"/>
+        </svg>
+        <span class="tool-name">Tableau</span>
+      </div>
+
+      <!-- Salesforce -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.5 6.5a3.5 3.5 0 013.2 2.1A3 3 0 0115.5 8a3 3 0 013 3 3 3 0 01-.3 1.3A2.5 2.5 0 0120 14.5a2.5 2.5 0 01-2.5 2.5H7A3.5 3.5 0 017 10a3.5 3.5 0 01.2-1.2A3.5 3.5 0 019.5 6.5z" fill="#00A1E0"/>
+        </svg>
+        <span class="tool-name">Salesforce</span>
+      </div>
+
+      <!-- Jira -->
+      <div class="tool-item">
+        <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.975 0C8.775 0 6.187 2.55 6.15 5.737c0 .038-.001.075-.001.113v5.9H11.8a.35.35 0 00.35-.35V5.85c0-.038 0-.075.002-.113C12.19 3.675 13.8 2.1 15.75 2.1c1.987 0 3.6 1.6 3.6 3.575v.2c0 .038 0 .075-.001.113V11.4h5.65V5.85C25 2.62 22.35 0 19.05 0h-7.075z" fill="#2684FF"/>
+          <path d="M6.15 11.75v5.9c0 .038 0 .075.001.113C6.188 20.95 8.775 23.5 11.975 23.5h7.075C22.35 23.5 25 20.88 25 17.65v-5.9h-5.65v5.55c0 .038 0 .075-.002.113-.038 2.062-1.65 3.637-3.6 3.637-1.987 0-3.6-1.6-3.6-3.575v-.175c0-.038 0-.075.001-.113v-5.437H6.15z" fill="url(#jira-grad)"/>
+          <defs>
+            <linearGradient id="jira-grad" x1="6.15" y1="17.625" x2="25" y2="17.625" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#0052CC"/>
+              <stop offset="100%" stop-color="#2684FF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="tool-name">Jira</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section class="section reveal" id="projects">
+    <div class="section-header">
+      <h2 class="section-title">GitHub Projects</h2>
+      <div class="section-rule"></div>
+      <span class="section-count" id="repo-count">github.com/shelbydonner</span>
+    </div>
+
+    <!-- Controls — hidden until repos exist -->
+    <div class="controls-row" id="project-controls" style="display:none">
+      <div class="filter-row">
+        <button class="chip active" onclick="setFilter('all',this)">All</button>
+        <button class="chip" onclick="setFilter('Python',this)">Python</button>
+        <button class="chip" onclick="setFilter('SQL',this)">SQL</button>
+      </div>
+      <div class="view-tabs">
+        <button class="tab active" onclick="setView('grid',this)">Grid</button>
+        <button class="tab" onclick="setView('list',this)">List</button>
+      </div>
+    </div>
+
+    <!-- Grid view -->
+    <div id="grid-view">
+      <div class="projects-grid" id="grid-inner" style="display:none"></div>
+      <!-- Empty state -->
+      <div class="empty-state" id="projects-empty">
+        <p class="empty-state-title">Projects coming soon</p>
+        <p class="empty-state-desc">I'm currently building out my public repository. Check back soon,<br>or visit my GitHub profile directly.</p>
+        <a class="empty-state-link" href="https://github.com/shelbydonner" target="_blank" rel="noopener">github.com/shelbydonner ↗</a>
+      </div>
+    </div>
+
+    <!-- List view -->
+    <div id="list-view" style="display:none">
+      <div class="projects-list" id="list-inner"></div>
+    </div>
+
+    <button class="show-more" id="show-more-btn" onclick="toggleMore()" style="display:none">Show more ↓</button>
+  </section>
+
+  <!-- WRITING -->
+  <section class="section reveal" id="writing">
+    <div class="section-header">
+      <h2 class="section-title">Notes &amp; Articles</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="writing-empty">
+      <p class="empty-state-title">Writing coming soon</p>
+      <p class="empty-state-desc">I'm working on a series of articles on analytics, consulting, and the messy<br>reality of working with data in the real world. Check back soon.</p>
+    </div>
+
+    <!-- Article list — add articles here as you write them -->
+    <div class="writing-list" id="writing-list" style="display:none">
+      <!--
+        TO ADD AN ARTICLE: copy the block below, fill in the details, and remove this comment.
+
+        <a class="article-row" href="writing/your-article-filename.html">
+          <div class="art-date">Mon YYYY</div>
+          <div>
+            <div class="art-title">Your Article Title</div>
+            <div class="art-sub">A one-line description of what the piece is about.</div>
+          </div>
+          <span class="art-tag">Article</span>
+        </a>
+      -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Shelby Donner</span>
+    <div class="footer-links">
+      <a class="footer-link" href="https://github.com/shelbydonner" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/shelbydonner/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Project controls (only used when repos are added) ──
+    let expanded = false, currentView = 'grid', currentFilter = 'all';
+
+    function setView(view, btn) {
+      currentView = view;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('grid-view').style.display = view === 'grid' ? 'block' : 'none';
+      document.getElementById('list-view').style.display = view === 'list' ? 'block' : 'none';
+      applyState();
+    }
+
+    function setFilter(lang, btn) {
+      currentFilter = lang;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      applyState();
+    }
+
+    function toggleMore() {
+      expanded = !expanded;
+      document.getElementById('show-more-btn').textContent = expanded ? 'Show less ↑' : 'Show more ↓';
+      applyState();
+    }
+
+    function applyState() {
+      let visibleCount = 0;
+      ['grid', 'list'].forEach(view => {
+        const container = document.getElementById(view + '-inner');
+        if (!container) return;
+        container.querySelectorAll('.proj-card, .proj-row').forEach(item => {
+          const matches = currentFilter === 'all' || item.dataset.lang === currentFilter;
+          const isExtra = item.classList.contains('extra');
+          const show = matches && (!isExtra || expanded);
+          item.classList.toggle('hidden', !show);
+          if (view === currentView && matches) visibleCount++;
+        });
+      });
+      const countEl = document.getElementById('repo-count');
+      if (countEl && visibleCount > 0) countEl.textContent = visibleCount + ' repos';
+    }
+
+    /*
+    ════════════════════════════════════════════════════════
+    HOW TO ADD A PROJECT
+    ════════════════════════════════════════════════════════
+    When you have GitHub repos to show, do the following:
+
+    1. Show the controls bar:
+       Change style="display:none" to style="display:flex"
+       on the element with id="project-controls"
+
+    2. Show the grid:
+       Change style="display:none" to style="display:grid"
+       on the element with id="grid-inner"
+
+    3. Hide the empty state:
+       Add style="display:none" to the element with id="projects-empty"
+
+    4. Add project cards inside #grid-inner using this template:
+
+       <a class="proj-card" href="https://github.com/shelbydonner/REPO-NAME"
+          target="_blank" rel="noopener" data-lang="Python">
+         <span class="proj-arrow">↗</span>
+         <div class="proj-lang">
+           <span class="lang-dot" style="background:#97E5D1"></span>Python
+         </div>
+         <div class="proj-name">repo-name</div>
+         <div class="proj-desc">One sentence describing what this repo does.</div>
+         <div class="proj-meta">
+           <span class="proj-stat">★ <span>0</span></span>
+           <span class="proj-stat">Forks <span>0</span></span>
+         </div>
+       </a>
+
+    5. For SQL repos, use data-lang="SQL" and
+       style="background:rgba(151,229,209,0.8)" on the lang-dot.
+
+    6. If you have more than 4 repos, add class="extra" to cards
+       beyond the first 4, and show the show-more button by
+       removing style="display:none" from #show-more-btn.
+    ════════════════════════════════════════════════════════
+    */
+  </script>
+
+</body>
+</html>
